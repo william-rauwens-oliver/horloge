@@ -42,7 +42,6 @@ def main():
     heure, minute, seconde = regler_heure()
     alarme = regler_alarme()
     mode_12_heures = affichage()
-
     while True:
         afficher_heure(heure, minute, seconde, mode_12_heures)
         verifier_alarme((heure, minute, seconde), alarme)
