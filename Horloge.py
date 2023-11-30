@@ -27,12 +27,12 @@ def affichage():
     mode = input("Choisissez le mode d'affichage (12 ou 24 heures) : ").lower()
     return mode == "12"
 
-def verifier_alarme(heure_actuelle, alarme):
+def sonnerie_alarme(heure_actuelle, alarme):
     if heure_actuelle == alarme:
         print(" C'est l'heure de ce réveiller, dring dring !")
         sys.exit()
 
-def mettre_en_pause():
+def pause():
     print("\nL'horloge est en pause. Appuyez sur Entrée pour la relancer.")
     while msvcrt.kbhit():
         msvcrt.getch()
@@ -44,11 +44,11 @@ def main():
     mode_12_heures = affichage()
     while True:
         afficher_heure(heure, minute, seconde, mode_12_heures)
-        verifier_alarme((heure, minute, seconde), alarme)
+        sonnerie_alarme((heure, minute, seconde), alarme)
         if msvcrt.kbhit():
             key = msvcrt.getch()
             if key == b'\r':
-                mettre_en_pause()
+                pause()
         time.sleep(1)
         seconde += 1
         if seconde == 60:
@@ -60,5 +60,4 @@ def main():
                 if heure == 24:
                     heure = 0
 
-if __name__ == "__main__":
-    main()
+main()
